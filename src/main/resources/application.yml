@@ -1,22 +1,23 @@
-# Configuración del servidor, la base de datos y los tokens JWT.
+# Configuración del servidor, la base de datos y la autenticación JWT.
 server:
   port: 8080
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/app_db
-    username: postgres
-    password: postgres_password
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/app_db}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: ${JPA_SHOW_SQL:false}
     properties:
       hibernate:
-        format_sql: true
+        format_sql: ${JPA_FORMAT_SQL:false}
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
 jwt:
-  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-  expiration: 86400000
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION:86400000}
