@@ -1,4 +1,4 @@
-// Tiene un endpoint de prueba que necesita un token JWT.
+// Expone un recurso protegido por autenticación JWT.
 package com.example.demo.controller;
 
 import org.springframework.http.ResponseEntity;
@@ -12,6 +12,6 @@ public class ResourceController {
 
     @GetMapping
     public ResponseEntity<String> getProtectedResource() {
-        return ResponseEntity.ok("¡Acceso concedido! Estás viendo un recurso protegido por token JWT.");
+        return ResponseEntity.ok("Recurso protegido disponible.");
     }
 }
